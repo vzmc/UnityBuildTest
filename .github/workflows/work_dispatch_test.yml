@@ -1,0 +1,21 @@
+name: Dispatch Test
+
+on: 
+  workflow_dispatch:
+    inputs:
+      name: 
+        description: 'input world'
+        required: true
+        default: 'Hello world'
+
+jobs:
+  Start:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: |
+          echo "${{github.event.inputs.name}}"
+
+      - name: Finish
+        run: |
+          echo "All steps finished"
