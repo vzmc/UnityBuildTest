@@ -1,0 +1,26 @@
+name: New Dispatch Test
+
+on: 
+  workflow_dispatch:
+    inputs:
+      name: 
+        description: 'Web Site'
+        required: true
+        default: 'WWWW'
+      home:
+        description: 'Location'
+        required: false
+        default: 'China'
+
+jobs:
+  Start:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Web Site Infomation
+        run: |
+          echo "Web Site: ${{github.event.inputs.name}}"
+          echo "location: ${{github.event.inputs.home}}"
+
+      - name: Finish
+        run: |
+          echo "Mission complete"
