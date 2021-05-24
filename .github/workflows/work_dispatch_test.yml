@@ -4,17 +4,22 @@ on:
   workflow_dispatch:
     inputs:
       name: 
-        description: 'input world'
+        description: 'Name'
         required: true
-        default: 'Hello world'
+        default: 'ZYB'
+      home:
+        description: 'Location'
+        required: false
+        default: 'Tokyo'
 
 jobs:
   Start:
     runs-on: ubuntu-latest
     steps:
-      - name: print
+      - name: Print Infomation
         run: |
-          echo "${{github.event.inputs.name}}"
+          echo "name: ${{github.event.inputs.name}}"
+          echo "location: ${{github.event.inputs.home}}"
 
       - name: Finish
         run: |
