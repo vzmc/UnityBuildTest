@@ -1,26 +1,30 @@
-name: Dispatch Test
+name: New Dispatch Test
 
 on: 
   workflow_dispatch:
     inputs:
       name: 
-        description: 'Name'
+        description: 'Web Site'
         required: true
-        default: 'ZYB'
+        default: 'WWWW'
       home:
         description: 'Location'
         required: false
-        default: 'Tokyo'
+        default: 'China'
+
+  push:
+    branches:
+      - "test2"
 
 jobs:
   Start:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Infomation
+      - name: Print Web Site Infomation
         run: |
-          echo "name: ${{github.event.inputs.name}}"
+          echo "Web Site: ${{github.event.inputs.name}}"
           echo "location: ${{github.event.inputs.home}}"
 
       - name: Finish
         run: |
-          echo "All steps finished"
+          echo "Mission complete"
