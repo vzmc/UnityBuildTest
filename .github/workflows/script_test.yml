@@ -16,10 +16,11 @@ jobs:
         uses: actions/github-script@v4
         id: set-result
         with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const listBranches = await github.repos.listBranches({
-              owner = content.repo.owner,
-              repo = content.repo.repo
+              owner: content.repo.owner,
+              repo: content.repo.repo
             });
             console.log(listBranches);
             return listBranches;
