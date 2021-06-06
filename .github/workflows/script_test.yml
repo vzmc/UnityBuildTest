@@ -18,7 +18,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const compare = github.compareCommitsWithBasehead({
+            const compare = github.repos.compareCommitsWithBasehead({
               owner: context.repo.owner,
               repo: context.repo.repo,
               basehead: `${context.repo.owner}:dev...${context.repo.owner}:hasdiff`
