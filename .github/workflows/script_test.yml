@@ -23,9 +23,10 @@ jobs:
               repo: context.repo.repo,
               state: "all",
             });
+
+            const length = listPR.data.length;
+            console.log(length);
             console.log(listPR.data);
-            //console.log(listPR);
-            //return listPR;
 
       # - name: Pint result
       #   run: |
