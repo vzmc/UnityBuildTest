@@ -18,16 +18,16 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const listBranches = await github.repos.listBranches({
+            const listPR = await github.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo
             });
-            console.log(listBranches);
-            return listBranches;
+            console.log(listPR);
+            return listPR;
 
-      - name: Pint result
-        run: |
-          echo ${{steps.set-result.outputs.result}}
+      # - name: Pint result
+      #   run: |
+      #     echo ${{steps.set-result.outputs.result}}
 
       - name: Finish
         run: |
