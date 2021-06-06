@@ -18,23 +18,30 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const compare1 = await github.repos.compareCommits({
+            const diverged = await github.repos.compareCommits({
               owner: context.repo.owner,
               repo: context.repo.repo,
               base: `${context.repo.owner}:dev`,
               head: `${context.repo.owner}:hasdiff`
             });
 
-            console.log(compare1.data);
-
-            const compare2 = await github.repos.compareCommits({
+            const behind = await github.repos.compareCommits({
               owner: context.repo.owner,
               repo: context.repo.repo,
               base: `${context.repo.owner}:dev`,
               head: `${context.repo.owner}:nodiff`
             });
 
-            console.log(compare2.data);
+            const ahead = await github.repos.compareCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              base: `${context.repo.owner}:dev`,
+              head: `${context.repo.owner}:ahead`
+            });
+
+            console.log(`diverged status = ${diverged.data.status}`);
+            console.log(`behind status = ${behind.data.status}`);
+            console.log(`ahead status = ${ahead.data.status}`);
 
       - name: Finish
         run: |
