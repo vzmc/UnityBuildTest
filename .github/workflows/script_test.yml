@@ -18,14 +18,23 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const compare = await github.repos.compareCommits({
+            const compare1 = await github.repos.compareCommits({
               owner: context.repo.owner,
               repo: context.repo.repo,
               base: `${context.repo.owner}:dev`,
               head: `${context.repo.owner}:hasdiff`
             });
 
-            console.log(compare);
+            console.log(compare1.data);
+
+            const compare2 = await github.repos.compareCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              base: `${context.repo.owner}:dev`,
+              head: `${context.repo.owner}:nodiff`
+            });
+
+            console.log(compare2.data);
 
       - name: Finish
         run: |
