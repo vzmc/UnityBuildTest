@@ -22,7 +22,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: "all",
-              base: "dev",
               head: "script-dev"
             });
             console.log(listPR);
