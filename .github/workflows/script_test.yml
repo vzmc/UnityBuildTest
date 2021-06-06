@@ -22,7 +22,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: "all",
-              head: "${context.repo.owner}:script-dev"
+              head: `${context.repo.owner}:script-dev`
             });
             console.log(listPR);
             return listPR;
