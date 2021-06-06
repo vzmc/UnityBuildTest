@@ -20,7 +20,8 @@ jobs:
           script: |
             const listPR = await github.pulls.list({
               owner: context.repo.owner,
-              repo: context.repo.repo
+              repo: context.repo.repo,
+              state: all
             });
             console.log(listPR);
             return listPR;
