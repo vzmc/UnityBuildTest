@@ -18,19 +18,13 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const listPR = await github.pulls.list({
+            const compare = github.compareCommitsWithBasehead({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              state: "all",
+              basehead: `${context.repo.owner}:dev...${context.repo.owner}:hasdiff`
             });
 
-            const length = listPR.data.length;
-            console.log(`pr count = ${length}`);
-            console.log(listPR.data);
-
-      # - name: Pint result
-      #   run: |
-      #     echo ${{steps.set-result.outputs.result}}
+            console.log(compare);
 
       - name: Finish
         run: |
