@@ -1,0 +1,33 @@
+name: Script Test
+
+on: 
+  workflow_dispatch:
+    inputs:
+      name: 
+        description: 'Version'
+        required: true
+        default: 'ZYB'
+
+jobs:
+  Start:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exec script
+        uses: actions/github-script@v4
+        id: set-result
+        with:
+          script: |
+            const listBranches = await github.repos.listBranches({
+              owner = content.repo.owner,
+              repo = content.repo.repo
+            });
+            console.log(listBranches);
+            return listBranches;
+
+      - name: Pint result
+        run: |
+          echo ${{steps.set-result.outputs.result}}
+
+      - name: Finish
+        run: |
+          echo "All steps finished"
