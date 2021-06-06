@@ -21,7 +21,9 @@ jobs:
             const listPR = await github.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              state: "all"
+              state: "all",
+              base: "dev",
+              head: "script-dev"
             });
             console.log(listPR);
             return listPR;
