@@ -25,7 +25,7 @@ jobs:
             });
 
             const length = listPR.data.length;
-            console.log(`pr count = &{length}`);
+            console.log(`pr count = ${length}`);
             console.log(listPR.data);
 
       # - name: Pint result
