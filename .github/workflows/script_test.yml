@@ -10,7 +10,7 @@ on:
 
 jobs:
   Start:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Exec script
         uses: actions/github-script@v4
