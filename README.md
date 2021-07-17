@@ -1,4 +1,3 @@
 # UnityBuildTest
-UnityBuildTest
 
-- 添加了Build
+用于测试GithubAction上给Unity打包的功能
